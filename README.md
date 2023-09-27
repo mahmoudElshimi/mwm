@@ -1,4 +1,4 @@
-mdwm - maria's dynamic window manager
+mdwm - Maria's Dynamic Window Manager
 =====================================
 mdwm is a fork of [dwm](https://dwm.suckless.org/) an extremely fast, small, and dynamic window manager for X written in C.
 
