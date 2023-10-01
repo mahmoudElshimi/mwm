@@ -1,12 +1,12 @@
 /* See LICENSE file for copyright and license details.
  *
- * maria's dwm a fork from dwm a dynamic window manager is designed like any other X client as well. It is
+ * maria's window manager a fork from dwm is designed like any other X client as well. It is
  * driven through handling X events. In contrast to other X clients, a window
  * manager selects for SubstructureRedirectMask on the root window, to receive
  * events about window (dis-)appearance. Only one X connection at a time is
  * allowed to select for this event mask.
  *
- * The event handlers of mdwm are organized in an array which is accessed
+ * The event handlers of mwm are organized in an array which is accessed
  * whenever a new event has been fetched. This allows event dispatching
  * in O(1) time.
  *
@@ -1646,7 +1646,7 @@ setup(void)
 	XChangeProperty(dpy, wmcheckwin, netatom[NetWMCheck], XA_WINDOW, 32,
 		PropModeReplace, (unsigned char *) &wmcheckwin, 1);
 	XChangeProperty(dpy, wmcheckwin, netatom[NetWMName], utf8string, 8,
-		PropModeReplace, (unsigned char *) "mdwm", 3);
+		PropModeReplace, (unsigned char *) "mwm", 3);
 	XChangeProperty(dpy, root, netatom[NetWMCheck], XA_WINDOW, 32,
 		PropModeReplace, (unsigned char *) &wmcheckwin, 1);
 	/* EWMH support per view */
@@ -1711,7 +1711,7 @@ spawn(const Arg *arg)
 			close(ConnectionNumber(dpy));
 		setsid();
 		execvp(((char **)arg->v)[0], (char **)arg->v);
-		die("mdwm: execvp '%s' failed:", ((char **)arg->v)[0]);
+		die("mwm: execvp '%s' failed:", ((char **)arg->v)[0]);
 	}
 }
 
@@ -1906,7 +1906,7 @@ updatebars(void)
 		.background_pixmap = ParentRelative,
 		.event_mask = ButtonPressMask|ExposureMask
 	};
-	XClassHint ch = {"mdwm", "mdwm"};
+	XClassHint ch = {"mwm", "mwm"};
 	for (m = mons; m; m = m->next) {
 		if (m->barwin)
 			continue;
@@ -2088,7 +2088,7 @@ void
 updatestatus(void)
 {
 	if (!gettextprop(root, XA_WM_NAME, stext, sizeof(stext)))
-		strcpy(stext, "mdwm-"VERSION);
+		strcpy(stext, "mwm-"VERSION);
 	drawbar(selmon);
 }
 
@@ -2238,7 +2238,7 @@ xerror(Display *dpy, XErrorEvent *ee)
 	|| (ee->request_code == X_GrabKey && ee->error_code == BadAccess)
 	|| (ee->request_code == X_CopyArea && ee->error_code == BadDrawable))
 		return 0;
-	fprintf(stderr, "mdwm: fatal error: request code=%d, error code=%d\n",
+	fprintf(stderr, "mwm: fatal error: request code=%d, error code=%d\n",
 		ee->request_code, ee->error_code);
 	return xerrorxlib(dpy, ee); /* may call exit */
 }
@@ -2254,7 +2254,7 @@ xerrordummy(Display *dpy, XErrorEvent *ee)
 int
 xerrorstart(Display *dpy, XErrorEvent *ee)
 {
-	die("mdwm: another window manager is already running");
+	die("mwm: another window manager is already running");
 	return -1;
 }
 
@@ -2274,13 +2274,13 @@ int
 main(int argc, char *argv[])
 {
 	if (argc == 2 && !strcmp("-v", argv[1]))
-		die("mdwm-"VERSION);
+		die("mwm-"VERSION);
 	else if (argc != 1)
-		die("usage: mdwm [-v]");
+		die("usage: mwm [-v]");
 	if (!setlocale(LC_CTYPE, "") || !XSupportsLocale())
 		fputs("warning: no locale support\n", stderr);
 	if (!(dpy = XOpenDisplay(NULL)))
-		die("mdwm: cannot open display");
+		die("mwm: cannot open display");
 	checkotherwm();
 	setup();
 #ifdef __OpenBSD__

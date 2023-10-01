@@ -1,11 +1,11 @@
-.TH mdwm 1 mdwm\-VERSION
+.TH mwm 1 mwm\-VERSION
 .SH NAME
-mdwm \- maria's dwm a fork from dwm dynamic window manager
+mwm \- maria's window manager
 .SH SYNOPSIS
-.B mdwm
+.B mwm
 .RB [ \-v ]
 .SH DESCRIPTION
-mdwm is a dynamic window manager for X. It manages windows in tiled, monocle
+mwm is a fork of dwm dynamic window manager for X. It manages windows in tiled, monocle
 and floating layouts. Either layout can be applied dynamically, optimising the
 environment for the application in use and the task performed.
 .P
@@ -29,7 +29,7 @@ color. The tags of the focused window are indicated with a filled square in the
 top left corner.  The tags which are applied to one or more windows are
 indicated with an empty square in the top left corner.
 .P
-mdwm draws a small border around windows to indicate the focus state.
+mwm draws a small border around windows to indicate the focus state.
 .SH OPTIONS
 .TP
 .B \-v
@@ -138,7 +138,7 @@ View all windows with any tag.
 Add/remove all windows with nth tag to/from the view.
 .TP
 .B Mod1\-Shift\-q
-Quit mdwm.
+Quit mwm.
 .SS Mouse commands
 .TP
 .B Mod1\-Button1
@@ -150,7 +150,7 @@ Toggles focused window between floating and tiled state.
 .B Mod1\-Button3
 Resize focused window while dragging. Tiled windows will be toggled to the floating state.
 .SH CUSTOMIZATION
-mdwm is customized by creating a custom config.h and (re)compiling the source
+mwm is customized by creating a custom config.h and (re)compiling the source
 code. This keeps it fast, secure and simple.
 .SH ISSUES
 Java applications which use the XToolkit/XAWT backend may draw grey windows
