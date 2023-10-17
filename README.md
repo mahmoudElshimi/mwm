@@ -43,6 +43,11 @@ like this in your .xinitrc:
     done &
     exec mwm
 ```
+Or you can use something better like [slstatus](https://tools.suckless.org/slstatus/) which is written in C.
+```
+    slstatus&
+    exec mwm
+```
 
 Configuration
 -------------
