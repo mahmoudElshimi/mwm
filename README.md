@@ -37,16 +37,16 @@ DISPLAY=foo.bar:1 exec mwm
 In order to display status info in the bar, you can do something
 like this in your .xinitrc:
 ```
-    while xsetroot -name "`date` `uptime | sed 's/.*,//'`"
-    do
-    	sleep 1
-    done &
-    exec mwm
+while xsetroot -name "`date` `uptime | sed 's/.*,//'`"
+do
+    sleep 1
+done &
+exec mwm
 ```
 Or you can use something better like [slstatus](https://tools.suckless.org/slstatus/) which is written in C.
 ```
-    slstatus&
-    exec mwm
+slstatus&
+exec mwm
 ```
 
 Configuration
